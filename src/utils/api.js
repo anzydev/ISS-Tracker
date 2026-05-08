@@ -56,15 +56,17 @@ export async function reverseGeocode(lat, lon) {
 }
 
 /* ========================
-   NEWS APIs (GNews)
+   NEWS APIs (via serverless proxy to bypass GNews CORS)
+   GNews free tier only allows CORS from localhost.
+   We proxy through /api/news (Vercel serverless function).
    ======================== */
 
 export async function fetchNews(category = 'general', query = '') {
   let url;
   if (query) {
-    url = `${GNEWS_BASE}/search?q=${encodeURIComponent(query)}&lang=en&max=10&apikey=${GNEWS_KEY}`;
+    url = `/api/news?q=${encodeURIComponent(query)}`;
   } else {
-    url = `${GNEWS_BASE}/top-headlines?category=${category}&lang=en&max=5&apikey=${GNEWS_KEY}`;
+    url = `/api/news?category=${encodeURIComponent(category)}`;
   }
 
   const res = await fetch(url);
