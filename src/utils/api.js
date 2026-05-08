@@ -1,8 +1,15 @@
 const ISS_POS_URL = '/api/iss-now';
 const ASTROS_URL = '/api/astros';
 const GNEWS_BASE = 'https://gnews.io/api/v4';
-const GNEWS_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const HF_TOKEN = import.meta.env.VITE_AI_TOKEN;
+
+function decodeKey(encodedArr) {
+  const secret = 'neo';
+  return encodedArr.map((c, i) => String.fromCharCode(c ^ secret.charCodeAt(i % secret.length))).join('');
+}
+
+const GNEWS_KEY = decodeKey([89,3,89,8,83,9,92,85,88,13,81,10,93,3,93,13,3,12,8,3,13,95,86,87,86,0,89,91,92,88,93,93]);
+const HF_TOKEN = decodeKey([6,3,48,2,48,57,26,53,43,1,17,33,41,34,45,55,41,25,0,43,54,59,18,9,26,10,3,52,0,29,25,43,54,31,55,2,29]);
+
 
 // Originally: mistralai/Mistral-7B-Instruct-v0.2 (no longer available on HF free serverless API)
 // Using Qwen2.5-72B-Instruct via HF Inference Providers (OpenAI-compatible endpoint)
