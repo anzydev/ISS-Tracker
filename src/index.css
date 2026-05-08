@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   NEO-BRUTALIST DESIGN SYSTEM — GLOBAL STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #FFFDF5;
+  color: #000000;
+  font-weight: 700;
+  overflow-x: hidden;
+}
+
+.dark body,
+body.dark-mode {
+  background-color: #1A1A1A;
+  color: #FFFDF5;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDF5;
+  border-left: 4px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border: 2px solid #FFFDF5;
+}
+
+/* --- Text Stroke Utility --- */
+.text-stroke {
+  -webkit-text-stroke: 2px #000;
+  color: transparent;
+}
+.dark .text-stroke {
+  -webkit-text-stroke: 2px #FFFDF5;
+}
+
+/* --- Background Patterns --- */
+.bg-halftone {
+  background-image: radial-gradient(#000 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+.dark .bg-halftone {
+  background-image: radial-gradient(rgba(255,253,245,0.15) 1.5px, transparent 1.5px);
+}
+
+.bg-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+}
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,253,245,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,253,245,0.06) 1px, transparent 1px);
+}
+
+/* --- Neo Button Push Effect --- */
+.neo-btn-push {
+  transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+}
+.neo-btn-push:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px 0px #000 !important;
+}
+
+/* --- Neo Card Lift Effect --- */
+.neo-card-lift {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+.neo-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 12px 12px 0px 0px #000;
+}
+
+/* --- Leaflet Overrides --- */
+.leaflet-container {
+  border: 4px solid #000;
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+  border: 3px solid #000 !important;
+  box-shadow: 4px 4px 0px 0px #000 !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+.leaflet-popup-tip {
+  border: 2px solid #000 !important;
+}
+
+/* --- Skeleton Loader --- */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-linear infinite;
+}
+
+/* --- Typing Indicator --- */
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+}
+.typing-dot {
+  animation: typing-bounce 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* --- Toast overrides --- */
+.toast-neo > div {
+  border: 3px solid #000 !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px 0px #000 !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* --- Dark Mode Helpers --- */
+.dark .neo-border {
+  border-color: #FFFDF5;
+}
+.dark .neo-shadow-sm {
+  box-shadow: 4px 4px 0px 0px #FFFDF5;
+}
+.dark .neo-shadow-md {
+  box-shadow: 8px 8px 0px 0px #FFFDF5;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .neo-btn-push,
+  .neo-card-lift,
+  .skeleton-pulse,
+  .typing-dot {
+    animation: none !important;
+    transition: none !important;
+  }
+}
