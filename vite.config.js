@@ -3,4 +3,19 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api/iss-now': {
+        target: 'http://api.open-notify.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/iss-now/, '/iss-now.json')
+      },
+      '/api/astros': {
+        target: 'http://api.open-notify.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/astros/, '/astros.json')
+      }
+    }
+  }
 })
+

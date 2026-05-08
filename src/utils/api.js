@@ -1,5 +1,5 @@
-const ISS_POS_URL = 'http://api.open-notify.org/iss-now.json';
-const ASTROS_URL = 'http://api.open-notify.org/astros.json';
+const ISS_POS_URL = '/api/iss-now';
+const ASTROS_URL = '/api/astros';
 const GNEWS_BASE = 'https://gnews.io/api/v4';
 const GNEWS_KEY = import.meta.env.VITE_NEWS_API_KEY;
 const HF_TOKEN = import.meta.env.VITE_AI_TOKEN;
